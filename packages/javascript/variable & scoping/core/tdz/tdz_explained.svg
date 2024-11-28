@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+    <!-- Background -->
+    <rect width="1200" height="1500" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="20" y="30" font-family="Arial" font-size="24" font-weight="bold" fill="#333">JavaScript Memory Model, TDZ, and Execution Context - Detailed View</text>
+    
+    <!-- Code Section -->
+    <rect x="20" y="50" width="1160" height="200" fill="#fff" stroke="#333" stroke-width="2"/>
+    <text x="40" y="80" font-family="Arial" font-size="18" font-weight="bold" fill="#333">Example Code:</text>
+    
+    <!-- Sample Code -->
+    <rect x="40" y="100" width="1120" height="130" fill="#e9ecef" stroke="#666"/>
+    <text x="60" y="130" font-family="Arial" font-size="14" fill="#333">console.log(globalVar);    // undefined (hoisted)</text>
+    <text x="60" y="155" font-family="Arial" font-size="14" fill="#333">console.log(blockLet);     // ReferenceError (TDZ)</text>
+    <text x="60" y="180" font-family="Arial" font-size="14" fill="#333">var globalVar = 'global';</text>
+    <text x="60" y="205" font-family="Arial" font-size="14" fill="#333">let blockLet = 'block';</text>
+    
+    <!-- Memory Layout Section -->
+    <rect x="20" y="270" width="1160" height="1210" fill="#fff" stroke="#333" stroke-width="2"/>
+    
+    <!-- Memory Allocation Phase -->
+    <rect x="40" y="290" width="350" height="1170" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="60" y="320" font-family="Arial" font-size="16" font-weight="bold" fill="#0c5460">1. Memory Allocation Phase</text>
+    
+    <!-- Global Memory -->
+    <rect x="60" y="340" width="310" height="280" fill="#fff" stroke="#0c5460"/>
+    <text x="80" y="370" font-family="Arial" font-size="14" fill="#0c5460">Global Memory Space:</text>
+    <!-- var allocation -->
+    <rect x="80" y="390" width="270" height="100" fill="#e9ecef" stroke="#0c5460"/>
+    <text x="100" y="410" font-family="Arial" font-size="12" fill="#0c5460">var globalVar:</text>
+    <text x="100" y="430" font-family="Arial" font-size="12" fill="#0c5460">✓ Memory allocated</text>
+    <text x="100" y="450" font-family="Arial" font-size="12" fill="#0c5460">✓ Auto-initialized: undefined</text>
+    <text x="100" y="470" font-family="Arial" font-size="12" fill="#0c5460">✓ Added to global object (window)</text>
+    
+    <!-- let allocation -->
+    <rect x="80" y="500" width="270" height="100" fill="#f8d7da" stroke="#721c24"/>
+    <text x="100" y="520" font-family="Arial" font-size="12" fill="#721c24">let blockLet:</text>
+    <text x="100" y="540" font-family="Arial" font-size="12" fill="#721c24">✓ Memory allocated</text>
+    <text x="100" y="560" font-family="Arial" font-size="12" fill="#721c24">✗ Not initialized</text>
+    <text x="100" y="580" font-family="Arial" font-size="12" fill="#721c24">✗ Not added to global object</text>
+    
+    <!-- Lexical Environment -->
+    <rect x="60" y="640" width="310" height="400" fill="#fff" stroke="#0c5460"/>
+    <text x="80" y="670" font-family="Arial" font-size="14" fill="#0c5460">Lexical Environment:</text>
+    
+    <!-- Environment Record -->
+    <rect x="80" y="690" width="270" height="160" fill="#e9ecef" stroke="#0c5460"/>
+    <text x="100" y="710" font-family="Arial" font-size="12" fill="#0c5460">Environment Record:</text>
+    <text x="100" y="730" font-family="Arial" font-size="12" fill="#0c5460">- Tracks all variables</text>
+    <text x="100" y="750" font-family="Arial" font-size="12" fill="#0c5460">- Manages binding status</text>
+    <text x="100" y="770" font-family="Arial" font-size="12" fill="#0c5460">- Maintains initialization state</text>
+    <text x="100" y="790" font-family="Arial" font-size="12" fill="#0c5460">- Controls variable access</text>
+    <text x="100" y="810" font-family="Arial" font-size="12" fill="#0c5460">- Implements TDZ checks</text>
+    
+    <!-- Scope Chain -->
+    <rect x="80" y="860" width="270" height="160" fill="#e9ecef" stroke="#0c5460"/>
+    <text x="100" y="880" font-family="Arial" font-size="12" fill="#0c5460">Scope Chain:</text>
+    <text x="100" y="900" font-family="Arial" font-size="12" fill="#0c5460">- References outer environments</text>
+    <text x="100" y="920" font-family="Arial" font-size="12" fill="#0c5460">- Maintains variable lookup path</text>
+    <text x="100" y="940" font-family="Arial" font-size="12" fill="#0c5460">- Resolves variable references</text>
+    <text x="100" y="960" font-family="Arial" font-size="12" fill="#0c5460">- Implements scope hierarchy</text>
+    <text x="100" y="980" font-family="Arial" font-size="12" fill="#0c5460">- Controls variable visibility</text>
+    
+    <!-- Memory States -->
+    <rect x="60" y="1060" width="310" height="380" fill="#fff" stroke="#0c5460"/>
+    <text x="80" y="1090" font-family="Arial" font-size="14" fill="#0c5460">Variable States:</text>
+    
+    <!-- Different States -->
+    <rect x="80" y="1110" width="270" height="310" fill="#e9ecef" stroke="#0c5460"/>
+    <text x="100" y="1130" font-family="Arial" font-size="12" fill="#0c5460">1. Uninitialized (TDZ):</text>
+    <text x="120" y="1150" font-family="Arial" font-size="12" fill="#0c5460">- Memory allocated</text>
+    <text x="120" y="1170" font-family="Arial" font-size="12" fill="#0c5460">- Cannot be accessed</text>
+    
+    <text x="100" y="1200" font-family="Arial" font-size="12" fill="#0c5460">2. Initialized:</text>
+    <text x="120" y="1220" font-family="Arial" font-size="12" fill="#0c5460">- Has value (undefined/given)</text>
+    <text x="120" y="1240" font-family="Arial" font-size="12" fill="#0c5460">- Can be accessed</text>
+    
+    <text x="100" y="1270" font-family="Arial" font-size="12" fill="#0c5460">3. Assigned:</text>
+    <text x="120" y="1290" font-family="Arial" font-size="12" fill="#0c5460">- Has specified value</text>
+    <text x="120" y="1310" font-family="Arial" font-size="12" fill="#0c5460">- Fully usable</text>
+    
+    <!-- Execution Timeline -->
+    <rect x="410" y="290" width="750" height="1170" fill="#fff3cd" stroke="#856404"/>
+    <text x="430" y="320" font-family="Arial" font-size="16" font-weight="bold" fill="#856404">2. Execution Timeline &amp; TDZ</text>
+    
+    <!-- Timeline -->
+    <line x1="450" y1="340" x2="450" y2="1440" stroke="#856404" stroke-width="2"/>
+    
+    <!-- Phase 1: Creation -->
+    <circle cx="450" cy="380" r="5" fill="#856404"/>
+    <rect x="470" y="350" width="670" height="80" fill="#fff" stroke="#856404"/>
+    <text x="490" y="375" font-family="Arial" font-size="14" fill="#856404">Phase 1: Execution Context Creation</text>
+    <text x="490" y="395" font-family="Arial" font-size="12" fill="#856404">- Creates Variable Environment</text>
+    <text x="490" y="415" font-family="Arial" font-size="12" fill="#856404">- Sets up Lexical Environment</text>
+    
+    <!-- Phase 2: Variable Registration -->
+    <circle cx="450" cy="480" r="5" fill="#856404"/>
+    <rect x="470" y="450" width="670" height="100" fill="#fff" stroke="#856404"/>
+    <text x="490" y="475" font-family="Arial" font-size="14" fill="#856404">Phase 2: Variable Registration</text>
+    <text x="490" y="495" font-family="Arial" font-size="12" fill="#856404">- Registers var declarations (initialized undefined)</text>
+    <text x="490" y="515" font-family="Arial" font-size="12" fill="#856404">- Registers let/const declarations (uninitialized)</text>
+    <text x="490" y="535" font-family="Arial" font-size="12" fill="#856404">- TDZ begins for let/const</text>
+    
+    <!-- TDZ Period -->
+    <rect x="470" y="570" width="670" height="400" fill="#f8d7da" fill-opacity="0.3" stroke="#721c24" stroke-dasharray="5,5"/>
+    <text x="490" y="595" font-family="Arial" font-size="14" font-weight="bold" fill="#721c24">Temporal Dead Zone (TDZ)</text>
+    
+    <!-- TDZ Details -->
+    <rect x="490" y="615" width="630" height="335" fill="#fff" stroke="#721c24"/>
+    <text x="510" y="640" font-family="Arial" font-size="12" fill="#721c24">What is TDZ?</text>
+    <text x="510" y="660" font-family="Arial" font-size="12" fill="#721c24">- Time period between variable registration and declaration</text>
+    <text x="510" y="680" font-family="Arial" font-size="12" fill="#721c24">- Not a physical memory space</text>
+    <text x="510" y="700" font-family="Arial" font-size="12" fill="#721c24">- Behavioral concept in JS engine</text>
+    
+    <text x="510" y="730" font-family="Arial" font-size="12" fill="#721c24">Why TDZ?</text>
+    <text x="510" y="750" font-family="Arial" font-size="12" fill="#721c24">- Prevents access to uninitialized variables</text>
+    <text x="510" y="770" font-family="Arial" font-size="12" fill="#721c24">- Ensures const initialization</text>
+    <text x="510" y="790" font-family="Arial" font-size="12" fill="#721c24">- Maintains block-scoping semantics</text>
+    
+    <text x="510" y="820" font-family="Arial" font-size="12" fill="#721c24">TDZ Characteristics:</text>
+    <text x="510" y="840" font-family="Arial" font-size="12" fill="#721c24">- Affects let, const, class</text>
+    <text x="510" y="860" font-family="Arial" font-size="12" fill="#721c24">- Throws ReferenceError on access</text>
+    <text x="510" y="880" font-family="Arial" font-size="12" fill="#721c24">- Exists in each block scope</text>
+    <text x="510" y="900" font-family="Arial" font-size="12" fill="#721c24">- Ends at declaration line</text>
+    <text x="510" y="920" font-family="Arial" font-size="12" fill="#721c24">- Different from var hoisting</text>
+    
+    <!-- Execution Points -->
+    <circle cx="450" cy="1000" r="5" fill="#856404"/>
+    <rect x="470" y="970" width="670" height="80" fill="#fff" stroke="#856404"/>
+    <text x="490" y="995" font-family="Arial" font-size="14" fill="#856404">console.log(globalVar) - Allowed (undefined)</text>
+    <text x="490" y="1015" font-family="Arial" font-size="12" fill="#856404">- var is hoisted and initialized</text>
+    <text x="490" y="1035" font-family="Arial" font-size="12" fill="#856404">- Access before declaration works</text>
+    
+    <circle cx="450" cy="1100" r="5" fill="#721c24"/>
+    <rect x="470" y="1070" width="670" height="80" fill="#fff" stroke="#721c24"/>
+    <text x="490" y="1095" font-family="Arial" font-size="14" fill="#721c24">console.log(blockLet) - ReferenceError</text>
+    <text x="490" y="1115" font-family="Arial" font-size="12" fill="#721c24">- let is in TDZ</text>
+    <text x="490" y="1135" font-family="Arial" font-size="12" fill="#721c24">- Cannot access before declaration</text>
+    
+    <!-- Declaration Points -->
+    <circle cx="450" cy="1200" r="5" fill="#0c5460"/>
+    <rect x="470" y="1170" width="670" height="80" fill="#fff" stroke="#0c5460"/>
+    <text x="490" y="1195" font-family="Arial" font-size="14" fill="#0c5460">var globalVar = 'global'</text>
+    <text x="490" y="1215" font-family="Arial" font-size="12" fill="#0c5460">- Value assigned</text>
+    <text x="490" y="1235" font-family="Arial" font-size="12" fill="#0c5460">- Variable already accessible</text>
+    
+    <circle cx="450" cy="1300" r="5" fill=

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f8f9fa"/>
+    
+    <!-- Code Section -->
+    <rect x="20" y="20" width="200" height="120" fill="#fff" stroke="#333"/>
+    <text x="30" y="45" font-family="Arial" font-size="12">console.log(x);</text>
+    <text x="30" y="65" font-family="Arial" font-size="12">console.log(y);</text>
+    <text x="30" y="85" font-family="Arial" font-size="12">var x = 1;</text>
+    <text x="30" y="105" font-family="Arial" font-size="12">let y = 2;</text>
+    
+    <!-- Phase 1: Creation Phase -->
+    <rect x="260" y="20" width="520" height="120" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="270" y="40" font-family="Arial" font-size="14" font-weight="bold">Phase 1: Creation Phase (First Pass)</text>
+    
+    <!-- Memory Allocation -->
+    <rect x="270" y="50" width="500" height="80" fill="#fff" stroke="#0c5460"/>
+    <text x="280" y="70" font-family="Arial" font-size="12">1. Scans entire code</text>
+    <text x="280" y="90" font-family="Arial" font-size="12">2. Creates memory for all variables</text>
+    <text x="280" y="110" font-family="Arial" font-size="12">3. Sets up scope chains</text>
+    
+    <!-- Phase 2: Registration -->
+    <rect x="260" y="160" width="520" height="140" fill="#fff3cd" stroke="#856404"/>
+    <text x="270" y="180" font-family="Arial" font-size="14" font-weight="bold">Phase 2: Registration Phase (Second Pass)</text>
+    
+    <!-- Variable Registration -->
+    <rect x="270" y="190" width="500" height="100" fill="#fff" stroke="#856404"/>
+    <text x="280" y="210" font-family="Arial" font-size="12">1. Scans code again</text>
+    <text x="280" y="230" font-family="Arial" font-size="12">2. var x: initialized as undefined</text>
+    <text x="280" y="250" font-family="Arial" font-size="12">3. let y: registered but uninitialized (TDZ)</text>
+    <text x="280" y="270" font-family="Arial" font-size="12">4. Sets up TDZ boundaries</text>
+    
+    <!-- Phase 3: Execution -->
+    <rect x="260" y="320" width="520" height="260" fill="#d4edda" stroke="#155724"/>
+    <text x="270" y="340" font-family="Arial" font-size="14" font-weight="bold">Phase 3: Execution Phase (Third Pass)</text>
+    
+    <!-- Execution Steps -->
+    <rect x="270" y="350" width="500" height="220" fill="#fff" stroke="#155724"/>
+    <text x="280" y="370" font-family="Arial" font-size="12">Line 1: console.log(x) → undefined (allowed)</text>
+    <text x="280" y="400" font-family="Arial" font-size="12">Line 2: console.log(y) → ReferenceError (TDZ)</text>
+    <text x="280" y="430" font-family="Arial" font-size="12">Line 3: x = 1 → Assigns value to x</text>
+    <text x="280" y="460" font-family="Arial" font-size="12">Line 4: y = 2 → Initializes y, ends TDZ</text>
+    
+    <!-- Arrows showing flow -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <path d="M230,80 L250,80" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M230,80 L250,220" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M230,80 L250,450" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+</svg>

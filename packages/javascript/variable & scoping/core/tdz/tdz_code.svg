@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+    <!-- Background -->
+    <rect width="1000" height="700" fill="#f8f9fa"/>
+    
+    <!-- Main Memory Space Title -->
+    <text x="20" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="#333">JavaScript Memory Model &amp; TDZ</text>
+    
+    <!-- Memory Layout -->
+    <rect x="20" y="50" width="960" height="630" fill="#fff" stroke="#333" stroke-width="2"/>
+    
+    <!-- Code Section -->
+    <rect x="40" y="70" width="400" height="180" fill="#e9ecef" stroke="#666"/>
+    <text x="50" y="95" font-family="Arial" font-size="16" font-weight="bold" fill="#333">Sample Code:</text>
+    <text x="50" y="125" font-family="Arial" font-size="14" fill="#333">console.log(x);      // undefined</text>
+    <text x="50" y="150" font-family="Arial" font-size="14" fill="#333">console.log(y);      // ReferenceError!</text>
+    <text x="50" y="175" font-family="Arial" font-size="14" fill="#333">var x = 1;</text>
+    <text x="50" y="200" font-family="Arial" font-size="14" fill="#333">let y = 2;</text>
+    
+    <!-- Memory Allocation Phase -->
+    <rect x="40" y="270" width="920" height="390" fill="#fff" stroke="#666"/>
+    <text x="50" y="295" font-family="Arial" font-size="16" font-weight="bold" fill="#333">Memory Allocation &amp; TDZ Visual</text>
+    
+    <!-- Creation Phase -->
+    <rect x="60" y="310" width="280" height="330" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="70" y="335" font-family="Arial" font-size="14" font-weight="bold" fill="#0c5460">Creation Phase</text>
+    
+    <!-- var allocation -->
+    <rect x="70" y="350" width="260" height="100" fill="#fff" stroke="#0c5460"/>
+    <text x="80" y="370" font-family="Arial" font-size="12" fill="#0c5460">var x;</text>
+    <text x="80" y="390" font-family="Arial" font-size="12" fill="#0c5460">✓ Memory allocated</text>
+    <text x="80" y="410" font-family="Arial" font-size="12" fill="#0c5460">✓ Initialized as undefined</text>
+    <text x="80" y="430" font-family="Arial" font-size="12" fill="#0c5460">✓ Accessible immediately</text>
+    
+    <!-- let allocation -->
+    <rect x="70" y="460" width="260" height="160" fill="#fff" stroke="#721c24"/>
+    <text x="80" y="480" font-family="Arial" font-size="12" fill="#721c24">let y;</text>
+    <text x="80" y="500" font-family="Arial" font-size="12" fill="#721c24">✓ Memory allocated</text>
+    <text x="80" y="520" font-family="Arial" font-size="12" fill="#721c24">✗ Not initialized</text>
+    <text x="80" y="540" font-family="Arial" font-size="12" fill="#721c24">✗ Not accessible (TDZ)</text>
+    <text x="80" y="560" font-family="Arial" font-size="12" fill="#721c24">⚠️ Throws ReferenceError if accessed</text>
+    <text x="80" y="580" font-family="Arial" font-size="12" fill="#721c24">ℹ️ TDZ ends at declaration line</text>
+    
+    <!-- Execution Timeline -->
+    <rect x="360" y="310" width="580" height="330" fill="#fff3cd" stroke="#856404"/>
+    <text x="370" y="335" font-family="Arial" font-size="14" font-weight="bold" fill="#856404">Execution Timeline &amp; TDZ</text>
+    
+    <!-- Timeline -->
+    <line x1="380" y1="360" x2="380" y2="620" stroke="#856404" stroke-width="2"/>
+    
+    <!-- Timeline Events -->
+    <!-- Start -->
+    <circle cx="380" cy="380" r="5" fill="#856404"/>
+    <text x="390" y="385" font-family="Arial" font-size="12" fill="#856404">Start of Scope</text>
+    
+    <!-- var x usage -->
+    <circle cx="380" cy="440" r="5" fill="#856404"/>
+    <text x="690" y="450" font-family="Arial" font-size="12" fill="#856404">console.log(x) - Works: undefined</text>
+    <path d="M385,440 L450,440" stroke="#0c5460" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- let y usage (error) -->
+    <circle cx="380" cy="500" r="5" fill="#721c24"/>
+    <text x="690" y="510" font-family="Arial" font-size="12" fill="#721c24">console.log(y) - Error: TDZ!</text>
+    <path d="M385,500 L450,500" stroke="#721c24" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- var x declaration -->
+    <circle cx="380" cy="560" r="5" fill="#0c5460"/>
+    <text x="390" y="565" font-family="Arial" font-size="12" fill="#0c5460">var x = 1 (value assigned)</text>
+    
+    <!-- let y declaration -->
+    <circle cx="380" cy="600" r="5" fill="#155724"/>
+    <text x="390" y="605" font-family="Arial" font-size="12" fill="#155724">let y = 2 (TDZ ends, value assigned)</text>
+    
+    <!-- TDZ Zone Visualization -->
+    <rect x="450" y="380" width="470" height="200" fill="#f8d7da" fill-opacity="0.3" stroke="#721c24" stroke-dasharray="5,5"/>
+    <text x="460" y="400" font-family="Arial" font-size="12" fill="#721c24">Temporal Dead Zone (TDZ)</text>
+    <text x="460" y="420" font-family="Arial" font-size="12" fill="#721c24">- Not a physical memory space</text>
+    <text x="460" y="440" font-family="Arial" font-size="12" fill="#721c24">- A time period between entering scope</text>
+    <text x="460" y="460" font-family="Arial" font-size="12" fill="#721c24">  and variable declaration</text>
+    <text x="460" y="480" font-family="Arial" font-size="12" fill="#721c24">- Memory exists but is uninitialized</text>
+    <text x="460" y="500" font-family="Arial" font-size="12" fill="#721c24">- Accessing variable throws ReferenceError</text>
+    
+    <!-- Safe Zone -->
+    <rect x="450" y="580" width="470" height="40" fill="#d4edda" fill-opacity="0.3" stroke="#155724"/>
+    <text x="460" y="635" font-family="Arial" font-size="12" fill="#155724">Safe Zone - Variables fully initialized and accessible</text>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg>

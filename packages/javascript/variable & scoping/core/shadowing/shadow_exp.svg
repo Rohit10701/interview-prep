@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+    <!-- Background -->
+    <rect width="800" height="500" fill="#f8f9fa"/>
+    
+    <!-- Code and Scope Section -->
+    <rect x="20" y="20" width="300" height="460" fill="#fff" stroke="#333"/>
+    <text x="30" y="45" font-family="Arial" font-size="14" font-weight="bold">Code Example:</text>
+    
+    <!-- Code -->
+    <rect x="30" y="60" width="280" height="410" fill="#e9ecef"/>
+    <text x="40" y="85" font-family="Arial" font-size="12">let x = 'global';</text>
+    <text x="40" y="110" font-family="Arial" font-size="12">function outer() {</text>
+    <text x="60" y="135" font-family="Arial" font-size="12">let x = 'outer';</text>
+    <text x="60" y="160" font-family="Arial" font-size="12">console.log(x); // 'outer'</text>
+    <text x="60" y="185" font-family="Arial" font-size="12">function inner() {</text>
+    <text x="80" y="210" font-family="Arial" font-size="12">let x = 'inner';</text>
+    <text x="80" y="235" font-family="Arial" font-size="12">console.log(x); // 'inner'</text>
+    <text x="60" y="260" font-family="Arial" font-size="12">}</text>
+    <text x="60" y="285" font-family="Arial" font-size="12">inner();</text>
+    <text x="40" y="310" font-family="Arial" font-size="12">}</text>
+    <text x="40" y="335" font-family="Arial" font-size="12">outer();</text>
+    <text x="40" y="360" font-family="Arial" font-size="12">console.log(x); // 'global'</text>
+    
+    <!-- Memory Model -->
+    <rect x="340" y="20" width="440" height="460" fill="#fff" stroke="#333"/>
+    <text x="350" y="45" font-family="Arial" font-size="14" font-weight="bold">Scope Chain &amp; Shadowing:</text>
+    
+    <!-- Global Scope -->
+    <rect x="360" y="60" width="400" height="80" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="370" y="85" font-family="Arial" font-size="14">Global Scope</text>
+    <text x="370" y="110" font-family="Arial" font-size="12">x = 'global'</text>
+    
+    <!-- Outer Function Scope -->
+    <rect x="380" y="160" width="360" height="80" fill="#d4edda" stroke="#155724"/>
+    <text x="390" y="185" font-family="Arial" font-size="14">Outer Function Scope</text>
+    <text x="390" y="210" font-family="Arial" font-size="12">x = 'outer' (shadows global x)</text>
+    
+    <!-- Inner Function Scope -->
+    <rect x="400" y="260" width="320" height="80" fill="#fff3cd" stroke="#856404"/>
+    <text x="410" y="285" font-family="Arial" font-size="14">Inner Function Scope</text>
+    <text x="410" y="310" font-family="Arial" font-size="12">x = 'inner' (shadows outer x)</text>
+    
+    <!-- Lookup arrows -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Lookup path -->
+    <path d="M410,360 L410,400" stroke="#666" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="420" y="385" font-family="Arial" font-size="12">Variable Lookup Path</text>
+    
+    <!-- Shadow effect -->
+    <rect x="360" y="420" width="400" height="50" fill="#f8f9fa" stroke="#666"/>
+    <text x="370" y="445" font-family="Arial" font-size="12">Each inner 'x' shadows (hides) outer 'x'</text>
+    <text x="370" y="460" font-family="Arial" font-size="12">Inner scopes can't affect outer variables</text>
+</svg>
