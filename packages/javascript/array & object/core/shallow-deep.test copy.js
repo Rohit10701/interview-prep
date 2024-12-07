@@ -26,6 +26,7 @@ console.log(original.b.c); // 2 (original is unaffected)
 console.log(deepCopy.b.c); // 3
 
 
+
 const data = {
 	a: 1,
 	b: [1, 2, 4],
@@ -54,5 +55,25 @@ function customDeepcopy(data) {
 	return clonedData
 }
 
-console.log(JSON.stringify(customDeepcopy(data), null, 2))
+// console.log(JSON.stringify(customDeepcopy(data), null, 2))
 
+describe('customDeepcopy', () => {
+	it('should deeply copy the nested data', () => {
+		const original = {
+			a: 1,
+			b: [1, 2, 4],
+			c: {
+				x: 'nested'
+			}
+		}
+
+		const copy = customDeepcopy(original)
+
+		// Test basic equality
+		expect(copy).toEqual(original)
+		// Test deep equality (no reference to the original)
+		expect(copy).not.toBe(original)
+		expect(copy.c).not.toBe(original.c) // Ensure nested object is also copied deeply
+		expect(copy.b).not.toBe(original.b) // Ensure array is copied deeply
+	})
+})

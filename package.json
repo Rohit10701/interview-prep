@@ -4,8 +4,8 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {},
   "devDependencies": {
+    "jest": "^29.7.0",
     "lerna": "^8.1.9"
   }
 }
