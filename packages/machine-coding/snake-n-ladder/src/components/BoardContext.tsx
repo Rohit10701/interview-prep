@@ -45,11 +45,11 @@ const BoardProvider = ({ children }: { children: React.ReactNode }) => {
         const { snakesOnTheBoard, ladderOnTheBoard, emptyPositionOnTheBoard } = generateSnakeLadderBoard();
       
         const initialBoardState: [keyof typeof Entity, number, number][] = [];
-      
+        
         snakesOnTheBoard.forEach((value, key) => initialBoardState.push([Entity.S, key, value]));
         ladderOnTheBoard.forEach((value, key) => initialBoardState.push([Entity.L, key, value]));
         emptyPositionOnTheBoard.forEach((value, key) => initialBoardState.push([Entity.N, key, value ?? -1]));
-      
+
         setBoardState(initialBoardState);
       };
 

@@ -16,7 +16,7 @@ export default function Home() {
 				totalStars={5}
 				defaultRating={4.7}
 				onChange={(rating) => console.log(rating)}
-        allowDecimal='any'
+        allowDecimal='full'
 			/>
 		</>
 	)

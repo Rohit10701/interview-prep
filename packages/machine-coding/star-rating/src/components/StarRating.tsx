@@ -111,7 +111,6 @@ const Star = ({
       <svg viewBox="0 0 24 24" width={size} height={size} fill="#ddd">
         <path d="M12 2l3.1 6.3 7 1-5 4.8 1.2 6.9-6.3-3.3-6.3 3.3 1.2-6.9-5-4.8 7-1z" />
       </svg>
-
       {/* Foreground (Colored Star) with Clipping */}
       <svg
         viewBox="0 0 24 24"
